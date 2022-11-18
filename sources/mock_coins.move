@@ -1,4 +1,4 @@
-module flashpoolcoins::coin {
+module flashpoolcoins::coins {
     use std::signer;
     use std::string::utf8;
 
@@ -77,5 +77,14 @@ module flashpoolcoins::coin {
         if (!coin::is_account_registered<CoinType>(signer::address_of(account))) {
             coin::register<CoinType>(account);
         };
+    }
+
+    #[test_only]
+    fun initialize_fake_money(
+        account: &signer,
+        amount: u64,
+    ) acquires Caps {
+        register_coins(account);
+        mint_coin<WING>(account, signer::address_of(account), amount);
     }
 }
