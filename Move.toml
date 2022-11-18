@@ -1,0 +1,12 @@
+[package]
+name = 'FlashPoolCoins'
+version = '1.0.0'
+
+[addresses]
+flashpoolcoins = "0x2e41cc7f3380caca16a75676c8f9a04564b55f6f8c465fe2eb932b8d5cb9950e"
+
+
+[dependencies.AptosFramework]
+git = 'https://github.com/aptos-labs/aptos-core.git'
+rev = 'main'
+subdir = 'aptos-move/framework/aptos-framework'
