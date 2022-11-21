@@ -80,7 +80,7 @@ module flashpoolcoins::coins {
     }
 
     #[test_only]
-    fun initialize_fake_money(
+    public fun initialize_fake_money(
         account: &signer,
         amount: u64,
     ) acquires Caps {
