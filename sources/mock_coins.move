@@ -80,11 +80,11 @@ module flashpoolcoins::coins {
     }
 
     #[test_only]
-    public fun initialize_fake_money(
+    public fun initialize_fake_money<CoinType>(
         account: &signer,
         amount: u64,
     ) acquires Caps {
         register_coins(account);
-        mint_coin<WING>(account, signer::address_of(account), amount);
+        mint_coin<CoinType>(account, signer::address_of(account), amount);
     }
 }
