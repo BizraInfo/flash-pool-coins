@@ -3,7 +3,10 @@ name = 'FlashPoolCoins'
 version = '1.0.0'
 
 [addresses]
-flashpoolcoins = "0xc601f58f26a20e04874d456028db57c47aca73b947385d4cb30100d949f1a712"
+std = "0x1"
+aptos_std = "0x1"
+aptos_framework = "0x1"
+flashpoolcoins = "0xa83690a4edb7fe646a27805b98d56bb3ddaf0983b46744e203d15e9f4dd6bf30"
 
 
 [dependencies.AptosFramework]

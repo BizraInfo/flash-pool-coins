@@ -43,7 +43,7 @@ module flashpoolcoins::coins {
                 utf8(b"USDT"), utf8(b"USDT"), 6, true);
         let (dai_b, dai_f, dai_m) =
             coin::initialize<DAI>(token_admin,
-                utf8(b"DAI"), utf8(b"DAI"), 6, true);
+                utf8(b"DAI"), utf8(b"DAI"), 8, true);
 
         let (wing_b, wing_f, wing_m) =
             coin::initialize<WING>(token_admin,
