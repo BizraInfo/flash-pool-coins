@@ -13,3 +13,8 @@ flashpoolcoins = "0xa83690a4edb7fe646a27805b98d56bb3ddaf0983b46744e203d15e9f4dd6
 git = 'https://github.com/aptos-labs/aptos-core.git'
 rev = 'main'
 subdir = 'aptos-move/framework/aptos-framework'
+
+[dependencies.AptosStdlib]
+git = 'https://github.com/aptos-labs/aptos-core.git'
+rev = 'main'
+subdir = 'aptos-move/framework/aptos-stdlib'

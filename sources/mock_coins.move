@@ -21,13 +21,16 @@ module flashpoolcoins::coins {
 
     struct WING {}
 
-    /// Storing mint/burn capabilities for `USDC` and `ETH` coins under user account.
+    /// Represents BNB coin.
+    struct BNB {}
+
+    /// Storing mint/burn capabilities for `USDC`, `ETH`, and `BNB` coins under user account.
     struct Caps<phantom CoinType> has key {
         mint: MintCapability<CoinType>,
         burn: BurnCapability<CoinType>,
     }
 
-    /// Initializes `ETH`, `USDC`, ,USDT , BTC , and `DAI` coins.
+    /// Initializes `ETH`, `USDC`, ,USDT , BTC , DAI, `WING`, and `BNB` coins.
     public entry fun register_coins(token_admin: &signer) {
         let (eth_b, eth_f, eth_m) =
             coin::initialize<ETH>(token_admin,
@@ -62,6 +65,17 @@ module flashpoolcoins::coins {
         move_to(token_admin, Caps<WING> { mint: wing_m, burn: wing_b });
         move_to(token_admin, Caps<BTC> { mint: btc_m, burn: btc_b });
         move_to(token_admin, Caps<USDT> { mint: usdt_m, burn: usdt_b });
+    }
+
+    /// Initializes `BNB` coin.
+    public entry fun register_bnb(token_admin: &signer) {
+        let (bnb_b, bnb_f, bnb_m) =
+            coin::initialize<BNB>(token_admin,
+                utf8(b"BNB"), utf8(b"BNB"), 8, true);
+
+        coin::destroy_freeze_cap(bnb_f);
+
+        move_to(token_admin, Caps<BNB> { mint: bnb_m, burn: bnb_b });
     }
 
     /// Mints new coin `CoinType` on account `acc_addr`.

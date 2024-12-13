@@ -93,6 +93,22 @@ module flashpoolcoins::faucet {
         coins
     }
 
+    /// Returns the current balance of the faucet.
+    public fun get_faucet_balance<CoinType>(faucet_addr: address): u64 acquires Faucet {
+        assert!(exists<Faucet<CoinType>>(faucet_addr), ERR_FAUCET_NOT_EXISTS);
+
+        let faucet = borrow_global<Faucet<CoinType>>(faucet_addr);
+        coin::value(&faucet.deposit)
+    }
+
+    /// Returns the current settings of the faucet.
+    public fun get_faucet_settings<CoinType>(faucet_addr: address): (u64, u64) acquires Faucet {
+        assert!(exists<Faucet<CoinType>>(faucet_addr), ERR_FAUCET_NOT_EXISTS);
+
+        let faucet = borrow_global<Faucet<CoinType>>(faucet_addr);
+        (faucet.per_request, faucet.period)
+    }
+
     // Scripts.
 
     /// Creates new faucet on `account` address for coin `CoinType`.
